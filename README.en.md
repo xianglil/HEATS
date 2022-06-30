@@ -60,5 +60,5 @@ Example:
 3.  Commit your code
 4.  Create Pull Request
 
-#### Contact info
+#### Contact Info
 xianglinliu01@gmail.com
