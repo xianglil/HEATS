@@ -1,37 +1,64 @@
 # MonteCarlo3D
 
-#### 介绍
-3-dimensional Monte Carlo simulation of high entropy alloys. 
+#### Description
+**3-dimensional Monte Carlo simulation of high entropy alloys**
+* Cannonical ensemble (fixed temperature).
+* Effective pair interaction (EPI) model.
+* Temperature parallelization.
 
-#### 软件架构
-软件架构说明
+For more information about EPI and high entropy alloys, you may check the following papers:
+* [Robust data-driven approach for predicting the configurational energy of high entropy alloys](https://www.sciencedirect.com/science/article/pii/S0264127519306859)
+* [Monte Carlo simulation of order-disorder transition in refractory high entropy alloys: A data-driven approach](https://www.sciencedirect.com/science/article/abs/pii/S0927025620306261)
 
+#### Software Architecture
+Software architecture description
 
-#### 安装教程
+#### Installation
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+Make sure you have the following packages already installed:
+* gcc: support -std=c++11.
+* MPI: support mpicxx, OpenMPI is used for testing, but the program should also works for MPICH.
+* python: >=3.0, include numpy, scipy, and matplotlib.
+* If you want to use the notebook, please install Jupyter Notebook.
 
-#### 使用说明
+#### Instructions
+Example:
+1. Generate "neighbors.dat" in "./Python/neighbor_tmp" via
+   ```bash
+   python ./Python/genNeighbors.py
+   ```
+   * Note that the first line in "neighbors.dat" is the distances of neighboring atoms to the centering atom. The radiu-cutoff r_max can be set in the main function of "genNeighbors.py". 
+   * The supercell size can also be set in the main function of "genNeighbors.py" by setting "n_repeats=[4,4,4]" to other values (by default, ).
+   * The "EPI.dat" are the energy model parameters for the pair-interaction model. They can be obtained from the linear regression of energy vs EPI. By default, it includes at most 6 neighboring shells.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+2. Run Monte Carlo simulation via
+   ```bash
+   cd ./C++
+   mpicxx -O3 -std=c++11 MonteCarlo.cpp
+   mpirun -n 4 ./a.out
+   ```
+    * The supercell size is obtained from the "neighbors.dat" mentioned above.
+    * Temperature parallelization is implemented with MPI. The following variables can be set in the main funciton:
+      * T_min and T_max: minimum and maximum temperatures.
+      * n_T: the number of different temperatures. parallelized with MPI.
+      * n_measure: the number of sweeps used for making measurement.
+      * n_discard: the number of sweeeps discarded between each measurement.
+      * You can save the output to a file with
+        ```bash
+        mpirun -n 4 ./a.out > ../Output/output.dat
+        ``` 
+        Note that the outputs start with a bunch of TEST, and the only the last TEST carries out the Monte Carlo simulation 
+3. You can also ignore the above steps, and simply run 
+   ```bash
+   ./run.sh
+   ```
 
-#### 参与贡献
+#### Contribution
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1.  Fork the repository
+2.  Create Feat_xxx branch
+3.  Commit your code
+4.  Create Pull Request
 
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+#### Contact Info
+xianglinliu01@gmail.com
