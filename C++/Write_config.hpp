@@ -24,7 +24,7 @@ public:
     void read_position(string file_name)
     {
         ifstream infile;
-        string file_loc = "../Python/neighbor_FeCoNiAlTi/" + file_name;
+        string file_loc = "../Python/neighbor_BCC/" + file_name;
         infile.open(file_loc);
         if (!infile.is_open()) throw std::runtime_error("Could not open file");
         string line, word;

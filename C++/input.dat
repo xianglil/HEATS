@@ -1,7 +1,7 @@
 #int n_measure 
-4000
+40000
 #int n_discard
-1000
+10000
 #int n_skip
 0
 #double T_max 
@@ -9,6 +9,6 @@
 #double T_min 
 50.0
 #int n_T 
-100
+40
 #int n_config_save
-1
+0

@@ -269,8 +269,8 @@ private:
 };
 
 // random_mt_int defined for random select. 
-string EPI_file = "../Python/neighbor_FeCoNiAlTi/EPI.dat";
-string neighborFile = "../Python/neighbor_FeCoNiAlTi/neighbors.dat";
+string EPI_file = "../Python/neighbor_BCC/EPI.dat";
+string neighborFile = "../Python/neighbor_BCC/neighbors.dat";
     Neighbor nb_g(neighborFile);
 #ifdef SEED_g
     Random_mt_int random_mt_int(0, nb_g.n_atom_shell[0]-1, SEED_g);

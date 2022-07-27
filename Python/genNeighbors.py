@@ -89,10 +89,10 @@ def genNeighbors_SC(n_repeats=[1,1,1], r_max=1.0, file_dir="./", elements=("Va")
     lattice_new.write_neighbors(file_neighbor)
 
 if __name__ == '__main__':
-    dir_tmp = "./neighbor_NiCoFe"
+    dir_tmp = "./neighbor_BCC"
     os.makedirs(dir_tmp, exist_ok=True)
     file_dir = os.path.join(os.getcwd(), dir_tmp)
     print(f"save the neighbors data at {file_dir}")
-    genNeighbors_BBC(n_repeats=[4,4,4], r_max=1.5, file_dir=dir_tmp)
+    genNeighbors_BBC(n_repeats=[12,12,12], r_max=1.01, file_dir=dir_tmp)
     #genNeighbors_FCC(n_repeats=[2,2,2], r_max=1.5, file_dir=dir_tmp)
     #genNeighbors_SC(n_repeats=[2,2,2], r_max=1.5, file_dir=dir_tmp)
