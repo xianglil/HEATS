@@ -99,5 +99,5 @@ if __name__ == '__main__':
 	                        ele_dict=ele_dict, n_repeat=n_repeat, lattice_const=lattice_const)
 	file_dat = os.path.join(out_dir, 'position.dat')
 	lattice_new.write_positions_LSMS2(file_dat)
-	# file_xyz = os.path.join(out_dir, 'position.xyz')
+	# file_xyz = os.path.join(out_dir, 'positions.xyz')
 	# lattice_new.write_positions_xyz(file_xyz)
