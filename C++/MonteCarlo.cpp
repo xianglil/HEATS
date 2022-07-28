@@ -306,7 +306,7 @@ struct MonteCarlo
 {
 public:
     MonteCarlo(Configuration config_in, Neighbor nb_in, vector< vector<double> > para_EPI_in):
-    config(config_in), nb(nb_in), para_EPI(para_EPI_in), kb(6.3336e-6)
+    config(config_in), nb(nb_in), para_EPI(para_EPI_in), kb(0.0861733)
     {
         n_shell = nb.n_shell;
         n_pair = config.n_pair;
