@@ -419,12 +419,17 @@ public:
         
         observables.temperature = T;
         observables.specific_heat = n_atom * variance(energy_ave)/(kb*T*T);
-//printf("Observables energy_ave:\n");
-//print_vector(energy_ave);
-//cout << "mean(energy_ave)=" << mean(energy_ave) << endl;
-//cout << "variance=" << variance(energy_ave) << endl;
-//cout << "kb*T*T=" << kb*T*T << endl;
-
+        /*
+        for (int j=0; j< energy_ave.size(); j++)
+        {
+          printf("energy_ave: %d  %10.8f\n", j, energy_ave[j]);
+        }
+        //printf("Observables energy_ave:\n");
+        //print_vector(energy_ave);
+        cout << "mean(energy_ave)=" << mean(energy_ave) << endl;
+        cout << "variance=" << variance(energy_ave) << endl;
+        //cout << "kb*T*T=" << kb*T*T << endl;
+        */
         for(int j=0; j<n_shell_SRO; j++)
         {
             for(int k=0; k<n_pair; k++)
@@ -825,10 +830,10 @@ void MonteCarloSimulation()
     // Start the Monte Carlo simulation
     //*********************************************************
     MonteCarlo mc(config_1, nb_g, para_EPI);
-#ifdef TEST_ALL
+//#ifdef TEST_ALL
     mc.TEST_random_swap();
-    mc.TEST_sweep(1000, 500);
-#endif
+    mc.TEST_sweep(10, 2000);
+//#endif
     Observables obs;
     double delta_T = (T_max - T_min)/(n_T -1);
 
@@ -922,8 +927,8 @@ void MonteCarloSimulation()
         for (int i=0; i<n_T; i++){cout << T_record_g[i] << endl;}
         printf("CV_record_g:\n");
         for (int i=0; i<n_T; i++){cout << CV_record_g[i] << endl;}
-        printf("SRO_record_g:\n");
-        for (int i=0; i<n_T*n_pair; i++){cout << SRO_record_g[i] << endl;}
+        //printf("SRO_record_g:\n");
+        //for (int i=0; i<n_T*n_pair; i++){cout << SRO_record_g[i] << endl;}
     }
 
     // delete dynamically allocated memory
